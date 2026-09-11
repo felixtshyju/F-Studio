@@ -1,0 +1,1307 @@
+/* ==========================================================================
+   TACTIX PRO - Modern Football Tactical Board Stylesheet
+   Pure Vanilla CSS - Modern, Responsive & Clean
+   ========================================================================== */
+
+/* --- CSS Variables / Design System --- */
+:root {
+  /* Theme Dark Palette */
+  --bg-main: #0a0e17;
+  --bg-card: rgba(18, 24, 38, 0.85);
+  --bg-card-hover: rgba(28, 36, 56, 0.95);
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-highlight: rgba(0, 230, 118, 0.4);
+
+  /* Tactical Turf Pitch Colors */
+  --pitch-grass-1: #1e6b37;
+  --pitch-grass-2: #247a3f;
+  --pitch-line: rgba(255, 255, 255, 0.82);
+  --pitch-glow: rgba(0, 230, 118, 0.15);
+
+  /* Team Jersey Defaults */
+  --kit-outfield: #0066ff;
+  --kit-gk: #f59e0b;
+  --kit-accent: #ffffff;
+
+  /* Accent Colors */
+  --accent-green: #00e676;
+  --accent-blue: #3b82f6;
+  --accent-gold: #fbbf24;
+  --accent-red: #ef4444;
+
+  /* Text Colors */
+  --text-primary: #ffffff;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+
+  /* Typography */
+  --font-main: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-tactical: 'Rajdhani', sans-serif;
+
+  /* Shadows & Radii */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+  --shadow-card: 0 10px 30px -5px rgba(0, 0, 0, 0.5);
+  --shadow-token: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* --- Global Resets & Basics --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(0, 102, 255, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(0, 230, 118, 0.06) 0%, transparent 40%);
+}
+
+/* --- Top App Header --- */
+.app-header {
+  height: 70px;
+  background: rgba(10, 14, 23, 0.9);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.logo-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-icon {
+  font-size: 28px;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
+}
+
+.logo-title {
+  font-family: var(--font-tactical);
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.logo-title span {
+  color: var(--accent-green);
+}
+
+.logo-subtitle {
+  font-size: 11px;
+  color: var(--text-secondary);
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+/* Header Team Details */
+.team-header-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-color);
+}
+
+.team-badge {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--kit-outfield), #1d4ed8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 13px;
+  color: #fff;
+  box-shadow: 0 0 10px rgba(0, 102, 255, 0.4);
+}
+
+.team-title-input {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-family: var(--font-main);
+  font-size: 15px;
+  font-weight: 600;
+  width: 140px;
+  outline: none;
+  cursor: text;
+  border-bottom: 1px dashed transparent;
+  transition: border-color 0.2s;
+}
+
+.team-title-input:hover,
+.team-title-input:focus {
+  border-color: var(--accent-green);
+}
+
+.formation-pill {
+  font-size: 11px;
+  font-weight: 700;
+  background: rgba(0, 230, 118, 0.15);
+  color: var(--accent-green);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* --- Buttons --- */
+.btn {
+  font-family: var(--font-main);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: var(--radius-md);
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #00e676, #00b359);
+  color: #042010;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(0, 230, 118, 0.25);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0, 230, 118, 0.4);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.07);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.btn-sm {
+  padding: 6px 12px;
+  font-size: 12px;
+}
+
+/* --- Main 3-Column Tactical Workspace --- */
+.tactical-workspace {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 280px 1fr 310px;
+  gap: 20px;
+  padding: 20px;
+  max-width: 1600px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* --- Sidebars --- */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow-y: auto;
+  max-height: calc(100vh - 110px);
+  padding-right: 4px;
+}
+
+/* Custom Scrollbar */
+.sidebar::-webkit-scrollbar,
+.starting-roster-list::-webkit-scrollbar,
+.bench-roster-list::-webkit-scrollbar {
+  width: 5px;
+}
+.sidebar::-webkit-scrollbar-thumb,
+.starting-roster-list::-webkit-scrollbar-thumb,
+.bench-roster-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 4px;
+}
+
+.sidebar-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-card);
+}
+
+.card-title {
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+  color: #fff;
+  letter-spacing: 0.3px;
+}
+
+.card-title .icon {
+  font-size: 16px;
+}
+
+.card-desc {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+/* --- Formation Preset Buttons --- */
+.formation-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.formation-btn {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 10px 8px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+.formation-btn:hover {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.formation-btn.active {
+  background: rgba(0, 230, 118, 0.12);
+  border-color: var(--accent-green);
+  box-shadow: 0 0 12px rgba(0, 230, 118, 0.25);
+}
+
+.formation-btn .f-name {
+  font-family: var(--font-tactical);
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.formation-btn .f-tag {
+  font-size: 10px;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+.formation-btn.active .f-name {
+  color: var(--accent-green);
+}
+
+/* Mentality Selector */
+.mentality-selector {
+  display: flex;
+  gap: 6px;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 4px;
+  border-radius: var(--radius-md);
+  margin-bottom: 14px;
+}
+
+.mentality-btn {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 0;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.mentality-btn.active {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.mentality-btn[data-mentality="attacking"].active {
+  background: rgba(239, 68, 68, 0.25);
+  color: #fca5a5;
+}
+
+.mentality-btn[data-mentality="defensive"].active {
+  background: rgba(59, 130, 246, 0.25);
+  color: #93c5fd;
+}
+
+/* Slider Controls */
+.slider-control {
+  margin-top: 8px;
+}
+
+.slider-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+}
+
+.slider-label span:last-child {
+  color: var(--accent-green);
+  font-weight: 600;
+}
+
+input[type="range"] {
+  width: 100%;
+  accent-color: var(--accent-green);
+  cursor: pointer;
+}
+
+/* Color Pickers */
+.color-picker-row {
+  display: flex;
+  gap: 12px;
+}
+
+.color-picker-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.color-picker-group label {
+  font-size: 11px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.color-picker-group input[type="color"] {
+  width: 100%;
+  height: 36px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  padding: 2px;
+}
+
+/* Quick Info / Guide */
+.info-card {
+  border-left: 3px solid var(--accent-green);
+}
+
+.info-card h3 {
+  font-size: 13px;
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+.guide-list {
+  list-style: none;
+  font-size: 11.5px;
+  color: var(--text-secondary);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.guide-list li strong {
+  color: var(--accent-green);
+}
+
+/* ==========================================================================
+   CENTER: FOOTBALL PITCH CANVAS
+   ========================================================================== */
+.pitch-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 640px;
+}
+
+.pitch-header-bar,
+.pitch-footer-bar {
+  width: 100%;
+  max-width: 580px;
+  text-align: center;
+  padding: 4px 0;
+}
+
+.pitch-side-label {
+  font-family: var(--font-tactical);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--text-muted);
+}
+
+.opponent-label {
+  color: rgba(239, 68, 68, 0.7);
+}
+
+.home-label {
+  color: rgba(59, 130, 246, 0.7);
+}
+
+/* The Realistic Football Pitch */
+.football-pitch {
+  width: 100%;
+  max-width: 580px;
+  height: 720px;
+  position: relative;
+  background-color: var(--pitch-grass-1);
+  border-radius: var(--radius-lg);
+  border: 3px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 
+    0 20px 40px -10px rgba(0, 0, 0, 0.7),
+    inset 0 0 50px rgba(0, 0, 0, 0.35),
+    0 0 30px var(--pitch-glow);
+  overflow: hidden;
+  user-select: none;
+}
+
+/* Striped Lawn Mowing Pattern */
+.pitch-stripes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    var(--pitch-grass-1) 0px,
+    var(--pitch-grass-1) 36px,
+    var(--pitch-grass-2) 36px,
+    var(--pitch-grass-2) 72px
+  );
+  pointer-events: none;
+}
+
+/* Pitch Markings Common */
+.football-pitch > div:not(.pitch-stripes):not(.players-overlay) {
+  position: absolute;
+  pointer-events: none;
+}
+
+/* Goal Net Top & Bottom */
+.goal-net {
+  width: 120px;
+  height: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.15) 0px,
+    rgba(255, 255, 255, 0.15) 3px,
+    transparent 3px,
+    transparent 6px
+  );
+  border: 2px solid rgba(255, 255, 255, 0.7);
+}
+
+.goal-net-top {
+  top: 0;
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+}
+
+.goal-net-bottom {
+  bottom: 0;
+  border-bottom: none;
+  border-radius: 4px 4px 0 0;
+}
+
+/* Halfway Line */
+.halfway-line {
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--pitch-line);
+}
+
+/* Center Circle */
+.center-circle {
+  top: 50%;
+  left: 50%;
+  width: 140px;
+  height: 140px;
+  transform: translate(-50%, -50%);
+  border: 2px solid var(--pitch-line);
+  border-radius: 50%;
+}
+
+/* Center Spot */
+.center-spot {
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  transform: translate(-50%, -50%);
+  background-color: var(--pitch-line);
+  border-radius: 50%;
+}
+
+/* 18-Yard Penalty Boxes */
+.penalty-box {
+  width: 280px;
+  height: 110px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 2px solid var(--pitch-line);
+}
+
+.penalty-box-top {
+  top: 0;
+  border-top: none;
+}
+
+.penalty-box-bottom {
+  bottom: 0;
+  border-bottom: none;
+}
+
+/* 6-Yard Goal Boxes */
+.six-yard-box {
+  width: 130px;
+  height: 45px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 2px solid var(--pitch-line);
+}
+
+.six-yard-box-top {
+  top: 0;
+  border-top: none;
+}
+
+.six-yard-box-bottom {
+  bottom: 0;
+  border-bottom: none;
+}
+
+/* Penalty Spots */
+.penalty-spot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--pitch-line);
+  border-radius: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.penalty-spot-top {
+  top: 80px;
+}
+
+.penalty-spot-bottom {
+  bottom: 80px;
+}
+
+/* Penalty Arcs (The "D") */
+.penalty-arc {
+  width: 90px;
+  height: 45px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 2px solid var(--pitch-line);
+}
+
+.penalty-arc-top {
+  top: 110px;
+  border-top: none;
+  border-radius: 0 0 90px 90px;
+}
+
+.penalty-arc-bottom {
+  bottom: 110px;
+  border-bottom: none;
+  border-radius: 90px 90px 0 0;
+}
+
+/* Corner Arcs */
+.corner-arc {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--pitch-line);
+}
+
+.corner-top-left {
+  top: 0;
+  left: 0;
+  border-right: none;
+  border-bottom: none;
+  border-radius: 0 0 24px 0;
+}
+
+.corner-top-right {
+  top: 0;
+  right: 0;
+  border-left: none;
+  border-bottom: none;
+  border-radius: 0 0 0 24px;
+}
+
+.corner-bottom-left {
+  bottom: 0;
+  left: 0;
+  border-right: none;
+  border-top: none;
+  border-radius: 0 24px 0 0;
+}
+
+.corner-bottom-right {
+  bottom: 0;
+  right: 0;
+  border-left: none;
+  border-top: none;
+  border-radius: 24px 0 0 0;
+}
+
+/* Subtle Tactical Pitch Lines */
+.pitch-zone-line {
+  left: 0;
+  right: 0;
+  height: 1px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.15);
+}
+
+.zone-final-third {
+  top: 33.33%;
+}
+
+.zone-defensive-third {
+  top: 66.66%;
+}
+
+/* ==========================================================================
+   DYNAMIC PLAYER TOKENS ON PITCH
+   ========================================================================== */
+.players-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+
+.player-token {
+  position: absolute;
+  width: 58px;
+  height: 58px;
+  transform: translate(-50%, -50%);
+  cursor: grab;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.2s;
+  z-index: 15;
+  touch-action: none; /* Allows smooth touch dragging */
+}
+
+.player-token:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+  z-index: 25;
+}
+
+.player-token.is-dragging {
+  cursor: grabbing;
+  transition: none !important; /* Instant response during drag */
+  z-index: 30;
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.6));
+}
+
+/* Jersey Circle Badge */
+.player-jersey {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--kit-outfield), #1040a0);
+  border: 2.5px solid #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-token);
+  position: relative;
+}
+
+/* Goalkeeper special jersey color */
+.player-token[data-position="GK"] .player-jersey {
+  background: linear-gradient(135deg, var(--kit-gk), #d97706);
+}
+
+/* Jersey Number Text */
+.player-number {
+  font-family: var(--font-tactical);
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+/* Position Pill */
+.player-pos-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  font-size: 9px;
+  font-weight: 700;
+  background: #0f172a;
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  padding: 1px 5px;
+  border-radius: var(--radius-full);
+}
+
+.player-token[data-position="GK"] .player-pos-badge {
+  color: #fbbf24;
+  border-color: rgba(251, 191, 36, 0.4);
+}
+
+.player-token[data-pos-group="FWD"] .player-pos-badge {
+  color: #f87171;
+  border-color: rgba(248, 113, 113, 0.4);
+}
+
+/* Captain Armband Indicator */
+.captain-badge {
+  position: absolute;
+  bottom: -4px;
+  left: -4px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--accent-gold);
+  color: #000;
+  font-weight: 800;
+  font-size: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid #fff;
+}
+
+/* Player Name Tag Plaque */
+.player-name-tag {
+  background: rgba(10, 14, 23, 0.85);
+  backdrop-filter: blur(4px);
+  color: #ffffff;
+  font-size: 10.5px;
+  font-weight: 600;
+  padding: 1px 7px;
+  border-radius: var(--radius-full);
+  margin-top: 3px;
+  white-space: nowrap;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  max-width: 80px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+
+/* ==========================================================================
+   RIGHT SIDEBAR: ROSTER & BENCH
+   ========================================================================== */
+.section-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.count-badge {
+  font-size: 11px;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--accent-green);
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+}
+
+/* Starting XI compact list */
+.starting-roster-list {
+  max-height: 220px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.roster-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.roster-item:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.roster-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.roster-number {
+  font-family: var(--font-tactical);
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--text-secondary);
+  width: 18px;
+}
+
+.roster-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.roster-pos {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--accent-green);
+  background: rgba(0, 230, 118, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* Substitutes Bench List */
+.bench-roster-list {
+  max-height: 260px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.bench-card-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 8px 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s;
+}
+
+.bench-card-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(0, 230, 118, 0.3);
+}
+
+.bench-sub-btn {
+  background: rgba(0, 230, 118, 0.15);
+  color: var(--accent-green);
+  border: 1px solid rgba(0, 230, 118, 0.3);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.bench-sub-btn:hover {
+  background: var(--accent-green);
+  color: #042010;
+}
+
+/* Add New Sub Form */
+.add-sub-form {
+  background: rgba(0, 0, 0, 0.25);
+  padding: 10px;
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.add-sub-form input,
+.add-sub-form select {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-color);
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-family: var(--font-main);
+  outline: none;
+}
+
+.add-sub-form input:focus,
+.add-sub-form select:focus {
+  border-color: var(--accent-green);
+}
+
+.add-sub-row {
+  display: grid;
+  grid-template-columns: 50px 1fr auto;
+  gap: 6px;
+}
+
+/* ==========================================================================
+   MODALS & DIALOGS
+   ========================================================================== */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(4, 7, 13, 0.75);
+  backdrop-filter: blur(8px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 16px;
+}
+
+.modal-backdrop.active {
+  display: flex;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.modal-box {
+  background: #111827;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 440px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+  overflow: hidden;
+}
+
+.export-modal-box {
+  max-width: 580px;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-color);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.modal-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.modal-jersey-preview {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--kit-outfield);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-tactical);
+  font-size: 18px;
+  font-weight: 700;
+  border: 2px solid #fff;
+}
+
+.modal-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.modal-subtitle {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.modal-close-btn {
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  line-height: 1;
+}
+
+.modal-close-btn:hover {
+  color: #fff;
+}
+
+.modal-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 12px;
+}
+
+.form-group label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.form-input {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-color);
+  color: #fff;
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  font-family: var(--font-main);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-input:focus {
+  border-color: var(--accent-green);
+}
+
+/* Custom Checkbox */
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 13px;
+  color: #fff;
+  user-select: none;
+}
+
+.checkbox-label input {
+  display: none;
+}
+
+.custom-checkbox {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--border-color);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.checkbox-label input:checked + .custom-checkbox {
+  background: var(--accent-gold);
+  border-color: var(--accent-gold);
+}
+
+.checkbox-label input:checked + .custom-checkbox::after {
+  content: '✓';
+  color: #000;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.modal-footer {
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  border-top: 1px solid var(--border-color);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* Lineup Export Preview Styling */
+.export-report {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #cbd5e1;
+}
+
+.export-section-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--accent-green);
+  margin-top: 12px;
+  margin-bottom: 6px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 4px;
+}
+
+/* Toast Message */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: rgba(16, 24, 39, 0.95);
+  border: 1px solid var(--accent-green);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: var(--radius-full);
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  pointer-events: none;
+  z-index: 150;
+}
+
+.toast.show {
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.97); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (Tablets & Mobile)
+   ========================================================================== */
+@media (max-width: 1200px) {
+  .tactical-workspace {
+    grid-template-columns: 260px 1fr 280px;
+    gap: 14px;
+    padding: 14px;
+  }
+}
+
+@media (max-width: 980px) {
+  .tactical-workspace {
+    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sidebar {
+    max-height: none;
+  }
+
+  .pitch-container {
+    order: -1;
+  }
+
+  .football-pitch {
+    max-width: 100%;
+    height: 640px;
+  }
+}
+
+@media (max-width: 600px) {
+  .app-header {
+    flex-direction: column;
+    height: auto;
+    padding: 12px 16px;
+    gap: 10px;
+  }
+
+  .header-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .football-pitch {
+    height: 560px;
+  }
+
+  .player-token {
+    width: 48px;
+    height: 48px;
+  }
+
+  .player-jersey {
+    width: 38px;
+    height: 38px;
+  }
+
+  .player-number {
+    font-size: 15px;
+  }
+
+  .player-name-tag {
+    font-size: 9px;
+    max-width: 65px;
+  }
+}
+
+/* Print Stylesheet for assignment submission */
+@media print {
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+  .app-header, .sidebar, .modal-backdrop, .toast {
+    display: none !important;
+  }
+  .pitch-container {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .football-pitch {
+    border-color: #000 !important;
+    box-shadow: none !important;
+  }
+}
