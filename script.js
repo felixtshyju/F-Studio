@@ -704,6 +704,20 @@ function setupExportAndResetButtons() {
   const closeExport1 = document.getElementById("exportCloseBtn");
   const closeExport2 = document.getElementById("exportCloseBtn2");
 
+  const saveBaseBtn = document.getElementById("saveBaseModelBtn");
+  if (saveBaseBtn) {
+    saveBaseBtn.addEventListener("click", () => {
+      const baseModelData = {
+        teamName: document.getElementById("teamNameInput").value || "Base Model",
+        formation: currentFormation,
+        startingXI: startingXI,
+        substitutes: substitutes
+      };
+      localStorage.setItem("tactix_base_model", JSON.stringify(baseModelData));
+      showToast("Lineup saved as 'Base Model' template! ⭐");
+    });
+  }
+
   // Reset to default positions for current formation
   resetBtn.addEventListener("click", () => {
     applyFormation(currentFormation);
