@@ -1,377 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tactix Pro - Football Tactical Lineup & Formation Manager</title>
-  <meta name="description"
-    content="Interactive football tactical lineup and formation strategy management system. Drag-and-drop players, switch formations, and manage substitutes.">
-
-  <!-- Google Fonts for Modern Aesthetics -->
+  <meta name="description" content="F Studio - Professional Football Tactical Lineup & Formation Strategy Management System">
+  <title>F Studio | Tactical Board</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Rajdhani:wght@600;700&display=swap"
-    rel="stylesheet">
-
-  <!-- Main Stylesheet -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Outfit:wght@700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-  <!-- Top Navigation Header -->
-  <header class="app-header">
-    <div class="logo-group">
+  <!-- ═══ Top Bar ═══ -->
+  <header class="topbar">
+    <div class="logo">
       <span class="logo-icon">⚽</span>
-      <div>
-        <h1 class="logo-title">TACTIX <span>PRO</span></h1>
-        <p class="logo-subtitle">Football Tactical Lineup & Strategy Management</p>
-      </div>
-    </div>
-
-    <!-- Match Scenario / Team Header Info -->
-    <div class="team-header-info">
-      <div class="team-badge" id="teamBadge">BM</div>
-      <input type="text" id="teamNameInput" class="team-title-input" value="Base Model"
-        title="Click to rename team">
-      <span class="formation-pill" id="activeFormationPill">4-3-3 Attacking</span>
-    </div>
-
-    <!-- Header Action Buttons -->
-    <div class="header-actions">
-      <button class="btn btn-secondary" id="saveBaseModelBtn" title="Save current tactical lineup as your custom Base Model">
-        💾 Save Base Model
-      </button>
-      <button class="btn btn-secondary" id="resetFormationBtn" title="Reset players to selected formation">
-        ↺ Reset
-      </button>
-      <button class="btn btn-primary" id="exportBtn" title="Export or print the tactical lineup">
-        📋 Export Lineup
-      </button>
+      <h1>F Studio</h1>
+      <span class="logo-tag">Tactical Board</span>
     </div>
   </header>
 
-  <!-- Main Tactical Workspace Layout -->
-  <main class="tactical-workspace">
+  <!-- ═══ App Layout ═══ -->
+  <main class="app">
 
-    <!-- LEFT SIDEBAR: Formations, Strategy & Team Customization -->
-    <aside class="sidebar sidebar-left">
-
-      <!-- Section 1: Formations Presets -->
-      <section class="sidebar-card">
-        <h2 class="card-title"><span class="icon">📐</span> Formation Presets</h2>
-        <p class="card-desc">Select a tactical shape to automatically organize your 11 players on the pitch.</p>
-
-        <div class="formation-grid">
-          <button class="formation-btn active" data-formation="4-3-3">
-            <span class="f-name">4-3-3</span>
-            <span class="f-tag">Attacking</span>
-          </button>
-          <button class="formation-btn" data-formation="4-4-2">
-            <span class="f-name">4-4-2</span>
-            <span class="f-tag">Classic</span>
-          </button>
-          <button class="formation-btn" data-formation="3-5-2">
-            <span class="f-name">3-5-2</span>
-            <span class="f-tag">Midfield Control</span>
-          </button>
-          <button class="formation-btn" data-formation="4-2-3-1">
-            <span class="f-name">4-2-3-1</span>
-            <span class="f-tag">Defensive</span>
-          </button>
-          <button class="formation-btn" data-formation="5-3-2">
-            <span class="f-name">5-3-2</span>
-            <span class="f-tag">Solid Block</span>
-          </button>
-          <button class="formation-btn" data-formation="3-4-3">
-            <span class="f-name">3-4-3</span>
-            <span class="f-tag">High Press</span>
-          </button>
+    <!-- Left Panel: Formations & Guide -->
+    <aside class="panel panel-left">
+      <div class="card">
+        <h2 class="card-title"><span class="ci">⚙️</span> Formation</h2>
+        <div class="fm-grid">
+          <button class="fm-btn active" data-f="4-3-3">4‑3‑3<small>Attacking</small></button>
+          <button class="fm-btn" data-f="4-4-2">4‑4‑2<small>Classic</small></button>
+          <button class="fm-btn" data-f="3-5-2">3‑5‑2<small>Midfield</small></button>
+          <button class="fm-btn" data-f="4-2-3-1">4‑2‑3‑1<small>Defensive</small></button>
         </div>
-      </section>
+      </div>
 
-      <!-- Section 2: Team Mentality & Tactics -->
-      <section class="sidebar-card">
-        <h2 class="card-title"><span class="icon">⚡</span> Team Mentality</h2>
-        <div class="mentality-selector">
-          <button class="mentality-btn" data-mentality="defensive">Defend</button>
-          <button class="mentality-btn active" data-mentality="balanced">Balanced</button>
-          <button class="mentality-btn" data-mentality="attacking">Attack</button>
-        </div>
-
-        <div class="slider-control">
-          <div class="slider-label">
-            <span>Defensive Line Height</span>
-            <span id="lineHeightVal">Standard</span>
-          </div>
-          <input type="range" id="lineHeightSlider" min="1" max="3" value="2" step="1">
-        </div>
-      </section>
-
-      <!-- Section 3: Team Kit Styling -->
-      <section class="sidebar-card">
-        <h2 class="card-title"><span class="icon">👕</span> Jersey Colors</h2>
-        <div class="color-picker-row">
-          <div class="color-picker-group">
-            <label for="jerseyColorPicker">Outfield Kit</label>
-            <input type="color" id="jerseyColorPicker" value="#0066ff">
-          </div>
-          <div class="color-picker-group">
-            <label for="gkColorPicker">Goalkeeper Kit</label>
-            <input type="color" id="gkColorPicker" value="#f59e0b">
-          </div>
-        </div>
-      </section>
-
-      <!-- Section 4: Quick Help / Instructions -->
-      <section class="sidebar-card info-card">
-        <h3>💡 Coach's Guide</h3>
-        <ul class="guide-list">
-          <li><strong>Drag</strong> any player token to adjust their position.</li>
-          <li><strong>Click</strong> any player to edit their name, number, and role.</li>
-          <li><strong>Click "Sub"</strong> on the bench to swap with a pitch player.</li>
+      <div class="card">
+        <h2 class="card-title"><span class="ci">💡</span> Instructions</h2>
+        <ul class="guide">
+          <li><b>🖱️ Drag</b> tokens to reposition players on the pitch</li>
+          <li><b>👆 Click</b> a token to edit name, number & position</li>
+          <li><b>⇄ Swap</b> bench reserves onto the pitch via substitute button</li>
+          <li><b>📐 Formation</b> presets auto-position all 11 starters</li>
         </ul>
-      </section>
-
+      </div>
     </aside>
 
-    <!-- CENTER: Realistic Green Football Pitch Canvas -->
-    <section class="pitch-container" id="pitchContainer">
-
-      <div class="pitch-header-bar">
-        <span class="pitch-side-label opponent-label">OPPONENT HALF (ATTACKING DIRECTION ↑)</span>
+    <!-- Center: Pitch -->
+    <section class="pitch-wrap">
+      <div class="hud hud-top"><span>▲ ATTACKING GOAL</span></div>
+      <div class="pitch" id="pitch">
+        <!-- Player tokens injected dynamically from players.json -->
       </div>
-
-      <!-- The Football Pitch Field with Markings -->
-      <div class="football-pitch" id="footballPitch">
-
-        <!-- Outer Pitch Boundary Turf Stripes -->
-        <div class="pitch-stripes"></div>
-
-        <!-- TOP GOALPOST & PENALTY AREA (Opponent Side) -->
-        <div class="goal-net goal-net-top"></div>
-        <div class="penalty-arc penalty-arc-top"></div>
-        <div class="penalty-box penalty-box-top"></div>
-        <div class="six-yard-box six-yard-box-top"></div>
-        <div class="penalty-spot penalty-spot-top"></div>
-
-        <!-- HALFWAY LINE & CENTER CIRCLE -->
-        <div class="halfway-line"></div>
-        <div class="center-circle"></div>
-        <div class="center-spot"></div>
-
-        <!-- BOTTOM GOALPOST & PENALTY AREA (Home Side) -->
-        <div class="penalty-arc penalty-arc-bottom"></div>
-        <div class="penalty-box penalty-box-bottom"></div>
-        <div class="six-yard-box six-yard-box-bottom"></div>
-        <div class="penalty-spot penalty-spot-bottom"></div>
-        <div class="goal-net goal-net-bottom"></div>
-
-        <!-- FOUR CORNER ARCS -->
-        <div class="corner-arc corner-top-left"></div>
-        <div class="corner-arc corner-top-right"></div>
-        <div class="corner-arc corner-bottom-left"></div>
-        <div class="corner-arc corner-bottom-right"></div>
-
-        <!-- TACTICAL PITCH ZONES OVERLAY (Optional subtle guidelines) -->
-        <div class="pitch-zone-line zone-final-third"></div>
-        <div class="pitch-zone-line zone-defensive-third"></div>
-
-        <!-- Dynamic Container for 11 Starting Player Tokens -->
-        <div class="players-overlay" id="playersOverlay">
-          <!-- Player tokens will be dynamically injected here by script.js -->
-        </div>
-
-      </div>
-
-      <div class="pitch-footer-bar">
-        <span class="pitch-side-label home-label">DEFENDING HALF (GOALKEEPER ↓)</span>
-      </div>
-
+      <div class="hud hud-bot"><span>DEFENDING GOAL ▼</span></div>
     </section>
 
-    <!-- RIGHT SIDEBAR: Starting XI Overview & Substitutes Bench -->
-    <aside class="sidebar sidebar-right">
-
-      <!-- Starting Lineup Summary -->
-      <section class="sidebar-card">
-        <div class="section-header-row">
-          <h2 class="card-title"><span class="icon">📋</span> Starting XI</h2>
-          <span class="count-badge" id="startingCount">11 / 11</span>
+    <!-- Right Panel: Bench -->
+    <aside class="panel panel-right">
+      <div class="card">
+        <div class="bench-head">
+          <h2 class="card-title"><span class="ci">🪑</span> Substitutes</h2>
+          <span class="bench-count" id="benchCount">0</span>
         </div>
-        <div class="starting-roster-list" id="startingRosterList">
-          <!-- Compact list of 11 players generated by script.js -->
+        <div class="bench-list" id="bench">
+          <!-- Bench items injected dynamically from players.json -->
         </div>
-      </section>
-
-      <!-- Substitutes Bench Roster -->
-      <section class="sidebar-card bench-card">
-        <div class="section-header-row">
-          <div>
-            <h2 class="card-title"><span class="icon">🪑</span> Substitutes Bench</h2>
-            <p class="card-desc">Reserve players ready to come on</p>
-          </div>
-          <span class="count-badge" id="benchCount">7 Subs</span>
-        </div>
-
-        <!-- Bench players list -->
-        <div class="bench-roster-list" id="benchRosterList">
-          <!-- Substitute cards generated by script.js -->
-        </div>
-
-        <!-- Add New Reserve Player Form -->
-        <div class="add-sub-form">
-          <input type="text" id="newSubName" placeholder="Player name..." maxlength="16">
-          <div class="add-sub-row">
-            <input type="number" id="newSubNumber" placeholder="No." min="1" max="99" value="12">
-            <select id="newSubPos">
-              <option value="GK">GK</option>
-              <option value="CB">CB</option>
-              <option value="LB">LB</option>
-              <option value="RB">RB</option>
-              <option value="CM" selected>CM</option>
-              <option value="CAM">CAM</option>
-              <option value="LW">LW</option>
-              <option value="RW">RW</option>
-              <option value="ST">ST</option>
-            </select>
-            <button class="btn btn-sm btn-primary" id="addNewSubBtn">+ Add</button>
-          </div>
-        </div>
-      </section>
-
+      </div>
     </aside>
 
   </main>
 
-  <!-- MODAL: Player Details & Position Editor -->
-  <div class="modal-backdrop" id="playerModal">
-    <div class="modal-box">
-
-      <div class="modal-header">
-        <div class="modal-title-wrap">
-          <span class="modal-jersey-preview" id="modalJerseyPreview">7</span>
-          <div>
-            <h3 class="modal-title" id="modalPlayerTitle">Edit Player</h3>
-            <span class="modal-subtitle" id="modalPlayerRoleSubtitle">Starting Lineup</span>
-          </div>
-        </div>
-        <button class="modal-close-btn" id="modalCloseBtn">&times;</button>
-      </div>
-
-      <div class="modal-body">
-
-        <!-- Player Name -->
-        <div class="form-group">
-          <label for="editPlayerName">Player Full / Display Name</label>
-          <input type="text" id="editPlayerName" class="form-input" placeholder="e.g. Cristiano Ronaldo" maxlength="20">
-        </div>
-
-        <!-- Jersey Number & Position -->
-        <div class="form-row">
-          <div class="form-group">
-            <label for="editPlayerNumber">Jersey Number</label>
-            <input type="number" id="editPlayerNumber" class="form-input" min="1" max="99">
-          </div>
-
-          <div class="form-group">
-            <label for="editPlayerPosition">Pitch Position</label>
-            <select id="editPlayerPosition" class="form-input">
-              <optgroup label="Goalkeeper">
-                <option value="GK">GK - Goalkeeper</option>
-              </optgroup>
-              <optgroup label="Defenders">
-                <option value="CB">CB - Center Back</option>
-                <option value="LB">LB - Left Back</option>
-                <option value="RB">RB - Right Back</option>
-                <option value="LWB">LWB - Left Wing Back</option>
-                <option value="RWB">RWB - Right Wing Back</option>
-              </optgroup>
-              <optgroup label="Midfielders">
-                <option value="CDM">CDM - Defensive Midfielder</option>
-                <option value="CM">CM - Central Midfielder</option>
-                <option value="CAM">CAM - Attacking Midfielder</option>
-                <option value="LM">LM - Left Midfielder</option>
-                <option value="RM">RM - Right Midfielder</option>
-              </optgroup>
-              <optgroup label="Forwards">
-                <option value="LW">LW - Left Winger</option>
-                <option value="RW">RW - Right Winger</option>
-                <option value="ST">ST - Striker</option>
-                <option value="CF">CF - Center Forward</option>
-              </optgroup>
-            </select>
-          </div>
-        </div>
-
-        <!-- Tactical Role / Instructions -->
-        <div class="form-group">
-          <label for="editPlayerRole">Tactical Role / Instruction</label>
-          <select id="editPlayerRole" class="form-input">
-            <option value="Standard">Standard / Balanced</option>
-            <option value="Sweeper Keeper">Sweeper Keeper (GK)</option>
-            <option value="Ball Playing Defender">Ball Playing Defender (DEF)</option>
-            <option value="Inverted Wing Back">Inverted Wing Back (DEF)</option>
-            <option value="Box-to-Box">Box-to-Box Engine (MID)</option>
-            <option value="Deep Lying Playmaker">Deep Lying Playmaker (MID)</option>
-            <option value="Shadow Striker">Shadow Striker (CAM)</option>
-            <option value="Inside Forward">Inside Forward (Winger)</option>
-            <option value="Target Man">Target Man (ST)</option>
-            <option value="Poacher">Poacher / Goalscorer (ST)</option>
-          </select>
-        </div>
-
-        <!-- Captaincy & Flags -->
-        <div class="form-group">
-          <label class="checkbox-label">
-            <input type="checkbox" id="editPlayerCaptain">
-            <span class="custom-checkbox"></span>
-            <span>Team Captain (© Armband)</span>
-          </label>
-        </div>
-
-        <!-- Quick Substitute Swap Selection (If on pitch) -->
-        <div class="form-group" id="quickSubGroup">
-          <label for="swapWithSubSelect">Substitute With Bench Player:</label>
-          <select id="swapWithSubSelect" class="form-input">
-            <option value="">-- Select a substitute to swap --</option>
-          </select>
-        </div>
-
-      </div>
-
-      <div class="modal-footer">
-        <button class="btn btn-secondary" id="modalCancelBtn">Cancel</button>
-        <button class="btn btn-primary" id="modalSaveBtn">Save Changes</button>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- MODAL: Quick Export / Print View -->
-  <div class="modal-backdrop" id="exportModal">
-    <div class="modal-box export-modal-box">
-      <div class="modal-header">
-        <h3 class="modal-title">📋 Tactical Lineup Report</h3>
-        <button class="modal-close-btn" id="exportCloseBtn">&times;</button>
-      </div>
-      <div class="modal-body" id="exportReportContent">
-        <!-- Generated text/lineup overview for printing -->
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-secondary" id="exportCloseBtn2">Close</button>
-        <button class="btn btn-primary" onclick="window.print()">🖨️ Print / Save PDF</button>
+  <!-- ═══ Edit Player Modal ═══ -->
+  <div class="overlay" id="editModal">
+    <div class="modal">
+      <h2>✏️ Edit Player</h2>
+      <label>Player Name <input type="text" id="eName" maxlength="24" placeholder="e.g. L. Messi"></label>
+      <label>Jersey Number <input type="number" id="eNum" min="1" max="99"></label>
+      <label>Position
+        <select id="ePos">
+          <option value="GK">GK — Goalkeeper</option>
+          <option value="CB">CB — Centre Back</option>
+          <option value="LB">LB — Left Back</option>
+          <option value="RB">RB — Right Back</option>
+          <option value="CM">CM — Central Midfielder</option>
+          <option value="LW">LW — Left Wing</option>
+          <option value="RW">RW — Right Wing</option>
+          <option value="ST">ST — Striker</option>
+        </select>
+      </label>
+      <div class="modal-actions">
+        <button class="btn btn-sec" id="editCancel">Cancel</button>
+        <button class="btn btn-pri" id="editSave">Save Changes</button>
       </div>
     </div>
   </div>
 
-  <!-- Toast Notification -->
-  <div class="toast" id="toastMessage">Formation updated!</div>
+  <!-- ═══ Substitution Modal ═══ -->
+  <div class="overlay" id="subModal">
+    <div class="modal">
+      <h2>⇄ Tactical Substitution</h2>
+      <p class="sub-desc" id="subDesc">Select a starter to swap with:</p>
+      <label>Swap with
+        <select id="subSelect"></select>
+      </label>
+      <div class="modal-actions">
+        <button class="btn btn-sec" id="subCancel">Cancel</button>
+        <button class="btn btn-pri" id="subConfirm">Confirm Swap</button>
+      </div>
+    </div>
+  </div>
 
-  <!-- Beginner-friendly, well-commented JavaScript -->
   <script src="script.js"></script>
 </body>
-
 </html>

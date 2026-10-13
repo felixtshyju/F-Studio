@@ -1,0 +1,25 @@
+{
+  "starters": [
+    { "name": "M. Neuer",    "num": 1,  "pos": "GK", "ovr": 90, "nat": "🇩🇪", "x": 50, "y": 87 },
+    { "name": "Marcelo",     "num": 12, "pos": "LB", "ovr": 86, "nat": "🇧🇷", "x": 14, "y": 70 },
+    { "name": "S. Ramos",    "num": 4,  "pos": "CB", "ovr": 87, "nat": "🇪🇸", "x": 37, "y": 74 },
+    { "name": "T. Silva",    "num": 2,  "pos": "CB", "ovr": 88, "nat": "🇧🇷", "x": 63, "y": 74 },
+    { "name": "Dani Alves",  "num": 22, "pos": "RB", "ovr": 84, "nat": "🇧🇷", "x": 86, "y": 70 },
+    { "name": "A. Iniesta",  "num": 8,  "pos": "CM", "ovr": 88, "nat": "🇪🇸", "x": 28, "y": 48 },
+    { "name": "L. Modrić",   "num": 19, "pos": "CM", "ovr": 87, "nat": "🇭🇷", "x": 50, "y": 40 },
+    { "name": "P. Pogba",    "num": 6,  "pos": "CM", "ovr": 86, "nat": "🇫🇷", "x": 72, "y": 48 },
+    { "name": "Neymar Jr",   "num": 11, "pos": "LW", "ovr": 88, "nat": "🇧🇷", "x": 18, "y": 20 },
+    { "name": "C. Ronaldo",  "num": 7,  "pos": "ST", "ovr": 94, "nat": "🇵🇹", "x": 50, "y": 14 },
+    { "name": "L. Messi",    "num": 10, "pos": "RW", "ovr": 94, "nat": "🇦🇷", "x": 82, "y": 20 }
+  ],
+  "bench": [
+    { "name": "G. Buffon",      "num": 77, "pos": "GK",  "ovr": 88, "nat": "🇮🇹" },
+    { "name": "D. Alaba",       "num": 27, "pos": "LB",  "ovr": 85, "nat": "🇦🇹" },
+    { "name": "G. Piqué",       "num": 3,  "pos": "CB",  "ovr": 85, "nat": "🇪🇸" },
+    { "name": "T. Kroos",       "num": 39, "pos": "CM",  "ovr": 87, "nat": "🇩🇪" },
+    { "name": "S. Busquets",    "num": 5,  "pos": "CM",  "ovr": 86, "nat": "🇪🇸" },
+    { "name": "E. Hazard",      "num": 17, "pos": "LW",  "ovr": 89, "nat": "🇧🇪" },
+    { "name": "L. Suárez",      "num": 9,  "pos": "ST",  "ovr": 90, "nat": "🇺🇾" },
+    { "name": "Z. Ibrahimović", "num": 18, "pos": "ST",  "ovr": 89, "nat": "🇸🇪" }
+  ]
+}
