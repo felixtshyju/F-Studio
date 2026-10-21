@@ -1,94 +1,308 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="F Studio - Professional Football Tactical Lineup & Formation Strategy Management System">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description"
+    content="F Studio - Professional Football Tactical Board, Real-World Formations & Squad Management">
   <title>F Studio | Tactical Board</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Outfit:wght@700;800;900&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@600;700;800;900&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
+  <!-- ═══ INTRO SPLASH SCREEN ═══ -->
+  <div class="intro-splash" id="introSplash">
+    <div class="intro-ball">⚽</div>
+    <div class="intro-title">F STUDIO</div>
+    <div class="intro-subtitle">Tactical Board Engine</div>
+    <div class="intro-bar"><div class="intro-bar-fill"></div></div>
+  </div>
 
   <!-- ═══ Top Bar ═══ -->
   <header class="topbar">
-    <div class="logo">
-      <span class="logo-icon">⚽</span>
-      <h1>F Studio</h1>
-      <span class="logo-tag">Tactical Board</span>
-    </div>
-  </header>
+    <div class="topbar-container">
 
-  <!-- ═══ App Layout ═══ -->
-  <main class="app">
-
-    <!-- Left Panel: Formations & Guide -->
-    <aside class="panel panel-left">
-      <div class="card">
-        <h2 class="card-title"><span class="ci">⚙️</span> Formation</h2>
-        <div class="fm-grid">
-          <button class="fm-btn active" data-f="4-3-3">4‑3‑3<small>Attacking</small></button>
-          <button class="fm-btn" data-f="4-4-2">4‑4‑2<small>Classic</small></button>
-          <button class="fm-btn" data-f="3-5-2">3‑5‑2<small>Midfield</small></button>
-          <button class="fm-btn" data-f="4-2-3-1">4‑2‑3‑1<small>Defensive</small></button>
+      <!-- Left: Squad Badge -->
+      <div class="topbar-left">
+        <div class="team-badge" title="Active Squad">
+          <span class="team-flag" id="teamFlag">🇦🇷</span>
+          <div class="team-details">
+            <span class="team-name" id="teamNameDisplay">Argentina AFA</span>
+            <span class="team-status"><span class="live-dot"></span><span id="pitchCount">11 On Pitch</span></span>
+          </div>
         </div>
       </div>
 
+      <!-- Center: F Studio Title -->
+      <div class="topbar-center">
+        <div class="logo">
+          <div class="logo-ball-glow">
+            <span class="logo-icon">⚽</span>
+          </div>
+          <div class="logo-text-group">
+            <h1 class="logo-title">F STUDIO</h1>
+            <span class="logo-subtitle">TACTICAL BOARD</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Tools -->
+      <div class="topbar-right">
+        <div class="helper-options">
+          <!-- Theme Toggle -->
+          <button class="help-btn" id="themeToggle" title="Toggle Theme" aria-label="Toggle Theme">
+            <span class="btn-icon" id="themeIcon">
+              <img src="bright-sun-light.svg" class="btn-icon-svg" id="themeIconImg" alt="Theme">
+            </span>
+            <span class="btn-text" id="themeText">Light</span>
+          </button>
+
+          <!-- Reset -->
+          <button class="help-btn" id="resetFormation" title="Reset Positions" aria-label="Reset Formation">
+            <span class="btn-icon"><img src="reset.svg" class="btn-icon-svg" alt="Reset"></span>
+            <span class="btn-text">Reset</span>
+          </button>
+
+          <!-- Export (PDF/Image) -->
+          <button class="help-btn" id="exportBtn" title="Export Lineup" aria-label="Export">
+            <span class="btn-icon"><img src="export.svg" class="btn-icon-svg" alt="Export"></span>
+            <span class="btn-text">Export</span>
+          </button>
+
+          <!-- Custom Lineup -->
+          <button class="help-btn" id="customLineupBtn" title="Custom Lineup Manager" aria-label="Custom Lineup">
+            <span class="btn-icon"><img src="edit.svg" class="btn-icon-svg" alt="Custom"></span>
+            <span class="btn-text">Custom</span>
+          </button>
+
+          <!-- Help -->
+          <button class="help-btn" id="helpBtn" title="Tactical Tips & Help" aria-label="Guide">
+            <span class="btn-icon"><img src="guide.svg" class="btn-icon-svg" alt="Guide"></span>
+            <span class="btn-text">Guide</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ═══ App Workspace ═══ -->
+  <main class="app">
+
+    <!-- Left Panel: Formations & Squad Info -->
+    <aside class="panel panel-left">
+      <!-- Formation Selector -->
       <div class="card">
-        <h2 class="card-title"><span class="ci">💡</span> Instructions</h2>
-        <ul class="guide">
-          <li><b>🖱️ Drag</b> tokens to reposition players on the pitch</li>
-          <li><b>👆 Click</b> a token to edit name, number & position</li>
-          <li><b>⇄ Swap</b> bench reserves onto the pitch via substitute button</li>
-          <li><b>📐 Formation</b> presets auto-position all 11 starters</li>
-        </ul>
+        <div class="card-header">
+          <h2 class="card-title"><img src="formation.svg" class="card-icon-svg" alt="Formations"> Formations</h2>
+          <span class="active-fm-badge" id="activeFmDisplay">4-3-3</span>
+        </div>
+        <div class="fm-grid">
+          <button class="fm-btn active" data-f="4-3-3">
+            <span class="fm-num">4‑3‑3</span><small>Attacking</small>
+          </button>
+          <button class="fm-btn" data-f="4-4-2">
+            <span class="fm-num">4‑4‑2</span><small>Classic</small>
+          </button>
+          <button class="fm-btn" data-f="3-5-2">
+            <span class="fm-num">3‑5‑2</span><small>Midfield</small>
+          </button>
+          <button class="fm-btn" data-f="4-2-3-1">
+            <span class="fm-num">4‑2‑3‑1</span><small>Pivot</small>
+          </button>
+        </div>
+      </div>
+
+      <!-- Team & Captain Info -->
+      <div class="card squad-info-card">
+        <div class="card-header">
+          <h2 class="card-title"><span class="ci-badge">©</span> Team & Captain</h2>
+          <span class="card-tag" id="squadTag">AFA XI</span>
+        </div>
+        <div class="captain-spotlight" id="captainDisplay">
+          <div class="captain-badge-large">©</div>
+          <div class="captain-meta">
+            <div class="captain-label">TEAM CAPTAIN</div>
+            <div class="captain-name" id="capName">L. Messi</div>
+            <div class="captain-specs">
+              <span class="spec-num">#10</span>
+              <span class="spec-pos">RW / CAM</span>
+              <span class="spec-ovr">94 OVR</span>
+            </div>
+          </div>
+        </div>
+        <div class="tactical-metrics">
+          <div class="metric-box">
+            <span class="metric-val" id="avgOvr">86.2</span>
+            <span class="metric-lbl">Squad OVR</span>
+          </div>
+          <div class="metric-box">
+            <span class="metric-val" id="totalStarters">11</span>
+            <span class="metric-lbl">Starters</span>
+          </div>
+          <div class="metric-box">
+            <span class="metric-val" id="totalReserves">12</span>
+            <span class="metric-lbl">Reserves</span>
+          </div>
+        </div>
+        <div class="quick-controls">
+          <button class="sub-ctrl-btn" id="toggleNamesBtn" title="Toggle Compactness">
+            <img src="info.svg" class="btn-mini-svg" alt=""> <span id="toggleNamesTxt">Compact Tags</span>
+          </button>
+        </div>
       </div>
     </aside>
 
-    <!-- Center: Pitch -->
+    <!-- Center: Tactical Pitch -->
     <section class="pitch-wrap">
-      <div class="hud hud-top"><span>▲ ATTACKING GOAL</span></div>
-      <div class="pitch" id="pitch">
-        <!-- Player tokens injected dynamically from players.json -->
+      <div class="hud hud-top">
+        <div class="hud-content">
+          <span class="hud-arrow">▲</span><span>ATTACKING GOAL</span><span class="hud-arrow">▲</span>
+        </div>
       </div>
-      <div class="hud hud-bot"><span>DEFENDING GOAL ▼</span></div>
+      <div class="pitch-container">
+        <div class="pitch" id="pitch">
+          <img src="Football_pitch.png" class="pitch-img" id="pitchImg" alt="Tactical Football Pitch" draggable="false">
+          <!-- Player tokens injected by JS -->
+        </div>
+      </div>
+      <div class="hud hud-bot">
+        <div class="hud-content">
+          <span class="hud-arrow">▼</span><span>DEFENDING GOAL</span><span class="hud-arrow">▼</span>
+        </div>
+      </div>
     </section>
 
     <!-- Right Panel: Bench -->
     <aside class="panel panel-right">
-      <div class="card">
+      <div class="card bench-card">
         <div class="bench-head">
-          <h2 class="card-title"><span class="ci">🪑</span> Substitutes</h2>
-          <span class="bench-count" id="benchCount">0</span>
+          <div class="bench-title-group">
+            <h2 class="card-title"><img src="info.svg" class="card-icon-svg" alt="Substitutes"> Substitutes</h2>
+            <span class="bench-count" id="benchCount">12 reserves</span>
+          </div>
+        </div>
+        <div class="bench-filters" id="benchFilters">
+          <button class="filter-pill active" data-filter="ALL">All</button>
+          <button class="filter-pill" data-filter="def">DEF</button>
+          <button class="filter-pill" data-filter="mid">MID</button>
+          <button class="filter-pill" data-filter="fwd">FWD</button>
+          <button class="filter-pill" data-filter="gk">GK</button>
         </div>
         <div class="bench-list" id="bench">
-          <!-- Bench items injected dynamically from players.json -->
+          <!-- Bench items injected by JS -->
         </div>
       </div>
     </aside>
 
   </main>
 
+  <!-- ═══ Footer ═══ -->
+  <footer class="app-footer">
+    <div class="footer-wrap">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="footer-ball">⚽</span>
+          <span class="footer-title">F STUDIO</span>
+          <span class="footer-sep">|</span>
+          <span class="footer-tagline">Tactical Lineup & Squad Management Engine</span>
+        </div>
+        <div class="footer-pills">
+          <span class="f-pill">Pro Edition</span>
+          <span class="f-pill">PDF & Image Export</span>
+          <span class="f-pill">Custom Lineup Builder</span>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="copyright-text">
+          &copy; 2026 F Studio. All Rights Reserved. Engineered with precision for coaches, analysts, and football tacticians.
+        </p>
+      </div>
+    </div>
+  </footer>
+
   <!-- ═══ Edit Player Modal ═══ -->
-  <div class="overlay" id="editModal">
+  <div class="overlay" id="editModal" role="dialog" aria-modal="true" aria-labelledby="editModalTitle">
     <div class="modal">
-      <h2>✏️ Edit Player</h2>
-      <label>Player Name <input type="text" id="eName" maxlength="24" placeholder="e.g. L. Messi"></label>
-      <label>Jersey Number <input type="number" id="eNum" min="1" max="99"></label>
-      <label>Position
-        <select id="ePos">
-          <option value="GK">GK — Goalkeeper</option>
-          <option value="CB">CB — Centre Back</option>
-          <option value="LB">LB — Left Back</option>
-          <option value="RB">RB — Right Back</option>
-          <option value="CM">CM — Central Midfielder</option>
-          <option value="LW">LW — Left Wing</option>
-          <option value="RW">RW — Right Wing</option>
-          <option value="ST">ST — Striker</option>
-        </select>
-      </label>
+      <div class="modal-header">
+        <h2 id="editModalTitle" class="modal-title-with-icon">
+          <img src="edit.svg" class="modal-title-svg" alt="Edit">
+          <span>Edit Player Card</span>
+        </h2>
+        <button class="modal-close" id="editCloseBtn" aria-label="Close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <label>Player Name
+          <input type="text" id="eName" maxlength="24" placeholder="e.g. L. Messi">
+        </label>
+        <div class="form-row">
+          <label>Jersey #
+            <input type="number" id="eNum" min="1" max="99">
+          </label>
+          <label>Position
+            <select id="ePos">
+              <option value="GK">GK — Goalkeeper</option>
+              <option value="CB">CB — Centre Back</option>
+              <option value="LB">LB — Left Back</option>
+              <option value="RB">RB — Right Back</option>
+              <option value="LWB">LWB — Left Wing Back</option>
+              <option value="RWB">RWB — Right Wing Back</option>
+              <option value="CDM">CDM — Defensive Mid</option>
+              <option value="CM">CM — Central Mid</option>
+              <option value="CAM">CAM — Attacking Mid</option>
+              <option value="LM">LM — Left Mid</option>
+              <option value="RM">RM — Right Mid</option>
+              <option value="LW">LW — Left Wing</option>
+              <option value="RW">RW — Right Wing</option>
+              <option value="ST">ST — Striker</option>
+            </select>
+          </label>
+        </div>
+        <div class="captain-toggle-row">
+          <label class="captain-toggle-label" for="eCaptain">
+            <span class="c-toggle-info">
+              <span class="c-toggle-badge">©</span>
+              <span>Designate as Team Captain</span>
+            </span>
+            <input type="checkbox" id="eCaptain" class="switch-checkbox">
+          </label>
+        </div>
+
+        <!-- Disciplinary Cards -->
+        <div class="discipline-section">
+          <div class="discipline-title">Match Discipline / Cards</div>
+          <div class="card-options-grid">
+            <label class="card-opt-btn" id="optCardNone">
+              <input type="radio" name="eCardOpt" value="none" checked>
+              <span class="card-opt-content">
+                <span class="card-sample none-sample">✓</span>
+                <span>Active</span>
+              </span>
+            </label>
+            <label class="card-opt-btn" id="optCardYellow">
+              <input type="radio" name="eCardOpt" value="yellow">
+              <span class="card-opt-content">
+                <span class="card-sample yellow-sample"></span>
+                <span>Yellow</span>
+              </span>
+            </label>
+            <label class="card-opt-btn" id="optCardRed">
+              <input type="radio" name="eCardOpt" value="red">
+              <span class="card-opt-content">
+                <span class="card-sample red-sample"></span>
+                <span>Red Card</span>
+              </span>
+            </label>
+          </div>
+        </div>
+      </div>
       <div class="modal-actions">
         <button class="btn btn-sec" id="editCancel">Cancel</button>
         <button class="btn btn-pri" id="editSave">Save Changes</button>
@@ -97,11 +311,17 @@
   </div>
 
   <!-- ═══ Substitution Modal ═══ -->
-  <div class="overlay" id="subModal">
+  <div class="overlay" id="subModal" role="dialog" aria-modal="true" aria-labelledby="subModalTitle">
     <div class="modal">
-      <h2>⇄ Tactical Substitution</h2>
-      <p class="sub-desc" id="subDesc">Select a starter to swap with:</p>
-      <label>Swap with
+      <div class="modal-header">
+        <h2 id="subModalTitle" class="modal-title-with-icon">
+          <img src="info.svg" class="modal-title-svg" alt="Sub">
+          <span>Tactical Substitution</span>
+        </h2>
+        <button class="modal-close" id="subCloseBtn" aria-label="Close">&times;</button>
+      </div>
+      <p class="sub-desc" id="subDesc">Select a starter to swap with reserve:</p>
+      <label>Swap with Starter
         <select id="subSelect"></select>
       </label>
       <div class="modal-actions">
@@ -111,6 +331,160 @@
     </div>
   </div>
 
+  <!-- ═══ Guide Modal ═══ -->
+  <div class="overlay" id="helpModal" role="dialog" aria-modal="true" aria-labelledby="helpModalTitle">
+    <div class="modal guide-modal">
+      <div class="modal-header">
+        <h2 id="helpModalTitle" class="modal-title-with-icon">
+          <img src="guide.svg" class="modal-title-svg" alt="Guide">
+          <span>Tactical Board Guide</span>
+        </h2>
+        <button class="modal-close" id="helpCloseBtn" aria-label="Close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <ul class="guide-list">
+          <li>
+            <span class="g-icon"><img src="info.svg" class="guide-step-svg" alt="Info"></span>
+            <div><b>Drag & Drop Players:</b> Freely drag any player token across the tactical pitch.</div>
+          </li>
+          <li>
+            <span class="g-icon"><img src="info.svg" class="guide-step-svg" alt="Info"></span>
+            <div><b>Click to Edit:</b> Tap any player on pitch to edit name, jersey number, position, or captaincy.</div>
+          </li>
+          <li>
+            <span class="g-icon"><img src="info.svg" class="guide-step-svg" alt="Info"></span>
+            <div><b>Substitutions:</b> Click <b>Sub</b> on any reserve in the bench to swap them onto the pitch.</div>
+          </li>
+          <li>
+            <span class="g-icon"><img src="formation.svg" class="guide-step-svg" alt="Formations"></span>
+            <div><b>Formations:</b> Select 4-3-3, 4-4-2, 3-5-2, or 4-2-3-1 to auto-align players in accurate positions.</div>
+          </li>
+          <li>
+            <span class="g-icon"><img src="export.svg" class="guide-step-svg" alt="Export"></span>
+            <div><b>Export:</b> Save your tactical lineup as high-resolution PNG image, PDF document, or clipboard summary.</div>
+          </li>
+          <li>
+            <span class="g-icon"><img src="edit.svg" class="guide-step-svg" alt="Custom"></span>
+            <div><b>Custom Lineup:</b> Build custom clubs with full squad management — add, edit, delete, save, and apply.</div>
+          </li>
+        </ul>
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-pri" id="helpGotIt">Got It</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ Export Modal (PDF & Image) ═══ -->
+  <div class="overlay" id="exportModal" role="dialog" aria-modal="true">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 class="modal-title-with-icon"><img src="export.svg" class="modal-title-svg" alt="Export"><span>Export Lineup</span></h2>
+        <button class="modal-close" id="exportCloseBtn" aria-label="Close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="export-options">
+          <div class="export-card" id="exportImage">
+            <span class="exp-icon-wrap"><img src="export.svg" class="exp-icon-svg" alt="PNG"></span>
+            <span class="exp-title">Save as Image</span>
+            <span class="exp-desc">High-quality PNG screenshot</span>
+          </div>
+          <div class="export-card" id="exportPDF">
+            <span class="exp-icon-wrap"><img src="export.svg" class="exp-icon-svg" alt="PDF"></span>
+            <span class="exp-title">Export as PDF</span>
+            <span class="exp-desc">Professional document with lineup</span>
+          </div>
+        </div>
+        <div class="export-options" style="margin-top:8px">
+          <div class="export-card" id="exportClipboard">
+            <span class="exp-icon-wrap"><img src="edit.svg" class="exp-icon-svg" alt="Clipboard"></span>
+            <span class="exp-title">Copy to Clipboard</span>
+            <span class="exp-desc">Text lineup summary</span>
+          </div>
+          <div class="export-card" id="exportFullPage">
+            <span class="exp-icon-wrap"><img src="guide.svg" class="exp-icon-svg" alt="Full Page"></span>
+            <span class="exp-title">Full Page Screenshot</span>
+            <span class="exp-desc">Entire tactical board capture</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ Custom Lineup Manager Modal ═══ -->
+  <div class="overlay" id="customModal" role="dialog" aria-modal="true">
+    <div class="modal modal-wide">
+      <div class="modal-header">
+        <h2 class="modal-title-with-icon"><img src="edit.svg" class="modal-title-svg" alt="Custom"><span>Custom Lineup Manager</span></h2>
+        <button class="modal-close" id="customCloseBtn" aria-label="Close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <!-- Team Details Row: Name, Tag, Flag -->
+        <div class="form-row club-info-row">
+          <label>Club Name
+            <input type="text" id="clubName" maxlength="30" placeholder="e.g. Real Madrid">
+          </label>
+          <label>Short Tag
+            <input type="text" id="clubTag" maxlength="6" placeholder="e.g. RMA">
+          </label>
+          <label>Flag / Icon
+            <input type="text" id="clubFlag" maxlength="4" placeholder="🇪🇸">
+          </label>
+        </div>
+
+        <!-- Add Player Row -->
+        <div class="section-label">Add Player to Squad</div>
+        <div class="add-player-row">
+          <input type="text" id="cpName" placeholder="Player Name" maxlength="20">
+          <input type="number" id="cpNum" placeholder="#" min="1" max="99">
+          <select id="cpPos">
+            <option value="GK">GK</option>
+            <option value="LB">LB</option>
+            <option value="CB">CB</option>
+            <option value="RB">RB</option>
+            <option value="CDM">CDM</option>
+            <option value="CM">CM</option>
+            <option value="CAM">CAM</option>
+            <option value="LW">LW</option>
+            <option value="RW">RW</option>
+            <option value="ST" selected>ST</option>
+          </select>
+          <input type="number" id="cpOvr" placeholder="OVR" min="1" max="99" value="85">
+          <button class="btn btn-pri" id="cpAdd">+ Add</button>
+        </div>
+
+        <!-- Player List Table -->
+        <div class="lineup-scroll" id="lineupScroll">
+          <table class="lineup-table">
+            <thead><tr><th>#</th><th>Name</th><th>Pos</th><th>OVR</th><th>Actions</th></tr></thead>
+            <tbody id="lineupBody">
+              <!-- Rows injected by JS -->
+            </tbody>
+          </table>
+        </div>
+        <div class="empty-state" id="emptyLineup" style="display:none">
+          <span class="empty-icon"><img src="info.svg" class="empty-svg" alt=""></span>
+          No players added yet. Add your players above to build your custom squad!
+        </div>
+      </div>
+      <div class="modal-actions custom-modal-actions">
+        <button class="btn btn-danger" id="clearLineup">Clear All</button>
+        <button class="btn btn-sec" id="saveLineup">Save Lineup</button>
+        <button class="btn btn-sec" id="loadLineup">Load Saved</button>
+        <button class="btn btn-pri" id="applyLineup">Apply to Pitch</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ Toast ═══ -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- CDN: html2canvas & jsPDF for export -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js"></script>
+
+  <!-- Controller Script -->
   <script src="script.js"></script>
 </body>
+
 </html>

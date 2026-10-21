@@ -1,25 +1,29 @@
 {
   "starters": [
-    { "name": "M. Neuer",    "num": 1,  "pos": "GK", "ovr": 90, "nat": "🇩🇪", "x": 50, "y": 87 },
-    { "name": "Marcelo",     "num": 12, "pos": "LB", "ovr": 86, "nat": "🇧🇷", "x": 14, "y": 70 },
-    { "name": "S. Ramos",    "num": 4,  "pos": "CB", "ovr": 87, "nat": "🇪🇸", "x": 37, "y": 74 },
-    { "name": "T. Silva",    "num": 2,  "pos": "CB", "ovr": 88, "nat": "🇧🇷", "x": 63, "y": 74 },
-    { "name": "Dani Alves",  "num": 22, "pos": "RB", "ovr": 84, "nat": "🇧🇷", "x": 86, "y": 70 },
-    { "name": "A. Iniesta",  "num": 8,  "pos": "CM", "ovr": 88, "nat": "🇪🇸", "x": 28, "y": 48 },
-    { "name": "L. Modrić",   "num": 19, "pos": "CM", "ovr": 87, "nat": "🇭🇷", "x": 50, "y": 40 },
-    { "name": "P. Pogba",    "num": 6,  "pos": "CM", "ovr": 86, "nat": "🇫🇷", "x": 72, "y": 48 },
-    { "name": "Neymar Jr",   "num": 11, "pos": "LW", "ovr": 88, "nat": "🇧🇷", "x": 18, "y": 20 },
-    { "name": "C. Ronaldo",  "num": 7,  "pos": "ST", "ovr": 94, "nat": "🇵🇹", "x": 50, "y": 14 },
-    { "name": "L. Messi",    "num": 10, "pos": "RW", "ovr": 94, "nat": "🇦🇷", "x": 82, "y": 20 }
+    { "name": "E. Martínez",    "num": 23, "pos": "GK",  "ovr": 90, "nat": "🇦🇷", "x": 50, "y": 89, "captain": false },
+    { "name": "N. Tagliafico",  "num": 3,  "pos": "LB",  "ovr": 83, "nat": "🇦🇷", "x": 15, "y": 73, "captain": false },
+    { "name": "N. Otamendi",    "num": 19, "pos": "CB",  "ovr": 85, "nat": "🇦🇷", "x": 36, "y": 75, "captain": false },
+    { "name": "C. Romero",      "num": 13, "pos": "CB",  "ovr": 86, "nat": "🇦🇷", "x": 64, "y": 75, "captain": false },
+    { "name": "N. Molina",      "num": 26, "pos": "RB",  "ovr": 83, "nat": "🇦🇷", "x": 85, "y": 73, "captain": false },
+    { "name": "E. Fernández",   "num": 24, "pos": "CDM", "ovr": 86, "nat": "🇦🇷", "x": 50, "y": 58, "captain": false },
+    { "name": "A. Mac Allister","num": 20, "pos": "CM",  "ovr": 85, "nat": "🇦🇷", "x": 32, "y": 43, "captain": false },
+    { "name": "R. De Paul",     "num": 7,  "pos": "CM",  "ovr": 85, "nat": "🇦🇷", "x": 68, "y": 43, "captain": false },
+    { "name": "Á. Di María",    "num": 11, "pos": "LW",  "ovr": 87, "nat": "🇦🇷", "x": 18, "y": 22, "captain": false },
+    { "name": "J. Álvarez",     "num": 9,  "pos": "ST",  "ovr": 86, "nat": "🇦🇷", "x": 50, "y": 15, "captain": false },
+    { "name": "L. Messi",       "num": 10, "pos": "RW",  "ovr": 94, "nat": "🇦🇷", "x": 82, "y": 22, "captain": true }
   ],
   "bench": [
-    { "name": "G. Buffon",      "num": 77, "pos": "GK",  "ovr": 88, "nat": "🇮🇹" },
-    { "name": "D. Alaba",       "num": 27, "pos": "LB",  "ovr": 85, "nat": "🇦🇹" },
-    { "name": "G. Piqué",       "num": 3,  "pos": "CB",  "ovr": 85, "nat": "🇪🇸" },
-    { "name": "T. Kroos",       "num": 39, "pos": "CM",  "ovr": 87, "nat": "🇩🇪" },
-    { "name": "S. Busquets",    "num": 5,  "pos": "CM",  "ovr": 86, "nat": "🇪🇸" },
-    { "name": "E. Hazard",      "num": 17, "pos": "LW",  "ovr": 89, "nat": "🇧🇪" },
-    { "name": "L. Suárez",      "num": 9,  "pos": "ST",  "ovr": 90, "nat": "🇺🇾" },
-    { "name": "Z. Ibrahimović", "num": 18, "pos": "ST",  "ovr": 89, "nat": "🇸🇪" }
+    { "name": "F. Armani",      "num": 1,  "pos": "GK",  "ovr": 79, "nat": "🇦🇷", "captain": false },
+    { "name": "G. Rulli",       "num": 12, "pos": "GK",  "ovr": 81, "nat": "🇦🇷", "captain": false },
+    { "name": "M. Acuña",       "num": 8,  "pos": "LB",  "ovr": 84, "nat": "🇦🇷", "captain": false },
+    { "name": "G. Montiel",     "num": 4,  "pos": "RB",  "ovr": 81, "nat": "🇦🇷", "captain": false },
+    { "name": "L. Martínez",    "num": 25, "pos": "CB",  "ovr": 85, "nat": "🇦🇷", "captain": false },
+    { "name": "G. Pezzella",    "num": 6,  "pos": "CB",  "ovr": 79, "nat": "🇦🇷", "captain": false },
+    { "name": "L. Paredes",     "num": 5,  "pos": "CDM", "ovr": 83, "nat": "🇦🇷", "captain": false },
+    { "name": "G. Rodríguez",   "num": 18, "pos": "CDM", "ovr": 80, "nat": "🇦🇷", "captain": false },
+    { "name": "E. Palacios",    "num": 14, "pos": "CM",  "ovr": 81, "nat": "🇦🇷", "captain": false },
+    { "name": "P. Dybala",      "num": 21, "pos": "CAM", "ovr": 86, "nat": "🇦🇷", "captain": false },
+    { "name": "Lautaro M.",     "num": 22, "pos": "ST",  "ovr": 87, "nat": "🇦🇷", "captain": false },
+    { "name": "Á. Correa",      "num": 15, "pos": "RW",  "ovr": 82, "nat": "🇦🇷", "captain": false }
   ]
 }
