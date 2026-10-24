@@ -743,7 +743,7 @@ function showToast(msg) {
   $('#saveLineup').onclick = () => {
     const clubName = $('#clubName').value.trim() || 'My Club';
     const clubTag = $('#clubTag').value.trim() || formatSquadTag(clubName);
-    const clubFlag = $('#clubFlag').value.trim() || '⚽';
+    const clubFlag = '⚽';
     const data = { clubName, clubTag, clubFlag, players: customPlayers };
     try {
       localStorage.setItem('fstudio-custom-lineup', JSON.stringify(data));
@@ -765,7 +765,6 @@ function showToast(msg) {
       customPlayers = data.players || [];
       $('#clubName').value = data.clubName || '';
       $('#clubTag').value = data.clubTag || '';
-      $('#clubFlag').value = data.clubFlag || '';
       renderCustomTable();
       showToast(`Loaded "${data.clubName}" (${customPlayers.length} players)`);
     } catch {
@@ -784,14 +783,13 @@ function showToast(msg) {
     const clubName = $('#clubName').value.trim() || 'Custom Club';
     const rawTag = $('#clubTag').value.trim();
     const clubTag = formatSquadTag(clubName, rawTag);
-    const clubFlag = $('#clubFlag').value.trim() || '⚽';
+    const clubFlag = '⚽';
 
     activeSquadName = clubName;
     activeSquadTag = clubTag;
     activeSquadFlag = clubFlag;
 
     if ($('#teamNameDisplay')) $('#teamNameDisplay').textContent = clubName;
-    if ($('#teamFlag')) $('#teamFlag').textContent = clubFlag;
     if ($('#squadTag')) $('#squadTag').textContent = clubTag;
 
     // 2. Select starting 11 intelligently:

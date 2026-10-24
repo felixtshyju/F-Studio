@@ -22,7 +22,9 @@
     <div class="intro-ball">⚽</div>
     <div class="intro-title">F STUDIO</div>
     <div class="intro-subtitle">Tactical Board Engine</div>
-    <div class="intro-bar"><div class="intro-bar-fill"></div></div>
+    <div class="intro-bar">
+      <div class="intro-bar-fill"></div>
+    </div>
   </div>
 
   <!-- ═══ Top Bar ═══ -->
@@ -32,7 +34,6 @@
       <!-- Left: Squad Badge -->
       <div class="topbar-left">
         <div class="team-badge" title="Active Squad">
-          <span class="team-flag" id="teamFlag">🇦🇷</span>
           <div class="team-details">
             <span class="team-name" id="teamNameDisplay">Argentina AFA</span>
             <span class="team-status"><span class="live-dot"></span><span id="pitchCount">11 On Pitch</span></span>
@@ -222,7 +223,8 @@
       </div>
       <div class="footer-bottom">
         <p class="copyright-text">
-          &copy; 2026 F Studio. All Rights Reserved. Engineered with precision for coaches, analysts, and football tacticians.
+          &copy; 2026 F Studio. All Rights Reserved. Engineered with precision for coaches, analysts, and football
+          tacticians.
         </p>
       </div>
     </div>
@@ -344,28 +346,33 @@
       <div class="modal-body">
         <ul class="guide-list">
           <li>
-            <span class="g-icon"><img src="info.svg" class="guide-step-svg" alt="Info"></span>
+            <span class="g-icon"><img src="mouse-.svg" class="guide-step-svg" alt="Mouse"></span>
             <div><b>Drag & Drop Players:</b> Freely drag any player token across the tactical pitch.</div>
           </li>
           <li>
-            <span class="g-icon"><img src="info.svg" class="guide-step-svg" alt="Info"></span>
-            <div><b>Click to Edit:</b> Tap any player on pitch to edit name, jersey number, position, or captaincy.</div>
+            <span class="g-icon"><img src="edit-pencil.svg" class="guide-step-svg" alt="Edit"></span>
+            <div><b>Click to Edit:</b> Tap any player on pitch to edit name, jersey number, position, or captaincy.
+            </div>
           </li>
           <li>
-            <span class="g-icon"><img src="info.svg" class="guide-step-svg" alt="Info"></span>
+            <span class="g-icon"><img src="substitute.svg" class="guide-step-svg" alt="Substitute"></span>
             <div><b>Substitutions:</b> Click <b>Sub</b> on any reserve in the bench to swap them onto the pitch.</div>
           </li>
           <li>
             <span class="g-icon"><img src="formation.svg" class="guide-step-svg" alt="Formations"></span>
-            <div><b>Formations:</b> Select 4-3-3, 4-4-2, 3-5-2, or 4-2-3-1 to auto-align players in accurate positions.</div>
+            <div><b>Formations:</b> Select 4-3-3, 4-4-2, 3-5-2, or 4-2-3-1 to auto-align players in accurate positions.
+            </div>
           </li>
           <li>
             <span class="g-icon"><img src="export.svg" class="guide-step-svg" alt="Export"></span>
-            <div><b>Export:</b> Save your tactical lineup as high-resolution PNG image, PDF document, or clipboard summary.</div>
+            <div><b>Export:</b> Save your tactical lineup as high-resolution PNG image, PDF document, or clipboard
+              summary.</div>
           </li>
           <li>
             <span class="g-icon"><img src="edit.svg" class="guide-step-svg" alt="Custom"></span>
-            <div><b>Custom Lineup:</b> Build custom clubs with full squad management — add, edit, delete, save, and apply.</div>
+            <div><b>Custom Lineup:</b> Build custom clubs with full squad management: add, edit, delete, save, and
+              apply.
+            </div>
           </li>
         </ul>
       </div>
@@ -379,7 +386,8 @@
   <div class="overlay" id="exportModal" role="dialog" aria-modal="true">
     <div class="modal">
       <div class="modal-header">
-        <h2 class="modal-title-with-icon"><img src="export.svg" class="modal-title-svg" alt="Export"><span>Export Lineup</span></h2>
+        <h2 class="modal-title-with-icon"><img src="export.svg" class="modal-title-svg" alt="Export"><span>Export
+            Lineup</span></h2>
         <button class="modal-close" id="exportCloseBtn" aria-label="Close">&times;</button>
       </div>
       <div class="modal-body">
@@ -415,20 +423,18 @@
   <div class="overlay" id="customModal" role="dialog" aria-modal="true">
     <div class="modal modal-wide">
       <div class="modal-header">
-        <h2 class="modal-title-with-icon"><img src="edit.svg" class="modal-title-svg" alt="Custom"><span>Custom Lineup Manager</span></h2>
+        <h2 class="modal-title-with-icon"><img src="edit.svg" class="modal-title-svg" alt="Custom"><span>Custom Lineup
+            Manager</span></h2>
         <button class="modal-close" id="customCloseBtn" aria-label="Close">&times;</button>
       </div>
       <div class="modal-body">
-        <!-- Team Details Row: Name, Tag, Flag -->
+        <!-- Team Details Row: Name, Tag -->
         <div class="form-row club-info-row">
           <label>Club Name
             <input type="text" id="clubName" maxlength="30" placeholder="e.g. Real Madrid">
           </label>
           <label>Short Tag
             <input type="text" id="clubTag" maxlength="6" placeholder="e.g. RMA">
-          </label>
-          <label>Flag / Icon
-            <input type="text" id="clubFlag" maxlength="4" placeholder="🇪🇸">
           </label>
         </div>
 
@@ -456,7 +462,15 @@
         <!-- Player List Table -->
         <div class="lineup-scroll" id="lineupScroll">
           <table class="lineup-table">
-            <thead><tr><th>#</th><th>Name</th><th>Pos</th><th>OVR</th><th>Actions</th></tr></thead>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Pos</th>
+                <th>OVR</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
             <tbody id="lineupBody">
               <!-- Rows injected by JS -->
             </tbody>
