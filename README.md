@@ -1,6 +1,6 @@
-# F Studio — Professional Football Tactical Board & Formation System
-
-A responsive, broadcast-grade football tactical board and squad management web application designed for coaches, analysts, and fans.
+# F Studio - Professional Football Tactical Board & Formation System
+**by Felix T Shyju, Franklin Abraham Mathew, Fahbin Jareer**
+- A responsive, broadcast-grade football tactical board and squad management web application designed for coaches, analysts, and fans.
 
 ## ⚽ Key Features
 - **Centered Top Header**: Sleek "F STUDIO" brand identity centered at the top with live squad badges and helper tools.
@@ -28,9 +28,4 @@ A responsive, broadcast-grade football tactical board and squad management web a
 - **Fully Responsive**:
   - Precision layout on PC monitors, tablets, and smartphones.
   - Touch-optimized drag controls and tap targets.
-- **Zero Heavy Dependencies**:
-  - 100% Vanilla JavaScript, CSS3, and HTML5 (no external JavaScript libraries added).
-
-## 🚀 Usage
-Open `index.html` in any modern web browser or run with any local HTTP server / Live Server.
 
